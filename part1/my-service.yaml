@@ -11,3 +11,14 @@ spec:
   # 컨테이너 내부의 80포트가 서비스의 9080포트로 연결될거다
     port: 9080
     targetPort: 80
+#kubectl get service
+# ==> clusterIP와 서비스 포트 노출
+
+#kubectl get endpointslices 
+# ==> 파드로 추정되는 포트들이 나옴.
+
+#kubectl describe pod my-nginx-deply-b8dd4cd6-vs2f8
+# ==> 상세파드 조회
+
+
+#kubectl exec my-localhost-pod -c nginx -- curl my-service:9080

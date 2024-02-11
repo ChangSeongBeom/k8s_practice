@@ -9,3 +9,7 @@ spec:
   - name: another-container
     image: curlimages/curl
     command: ["sh","-c","sleep 1000"]
+
+
+# kubectl exec my-localhost-pod -c another-container -- curl localhost:80
+# 이 명령어 호출시 another-container에서 nginx를 호출함. 즉, 컨테이너 끼리의 호출

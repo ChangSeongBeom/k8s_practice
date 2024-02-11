@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-factorial-cache-app
+  namespace: factorial
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: factorial-cache-app
+  template:
+    metadata:
+      labels:
+        app: factorial-cache-app
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+        - name: factorial
+          image: changsungbeom5597/factorial-cache-app:0.0.6
+          imagePullPolicy: Always
+
+          env:
+            - name: APP_LANGUAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: factorial-config
+                  key: language
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: factorial-secret
+                  key: api-key
+#          lifecycle:
+#            preStop:
+#              exec:
+#                command: ["/bin/sh","-c","sleep 10"]

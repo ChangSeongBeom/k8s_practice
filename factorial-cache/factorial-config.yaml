@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: factorial-config
+  namespace: factorial
+data:
+  language: "ko"
+---
+
+
+# 시크릿 키 만들기
+# kubectl -n factorial create secret generic factorial-secret --from-literal=api-key=abcd-1234-5678
+
+# 시크릿 확인
+# kubectl -n factorial get secret factorial-secret -o yaml
+
+#디코딩 해보기
+#echo  "YWJjZC0xMjM0LTU2Nzg=" | base64 -d
+#abcd-1234-5678
+
+#직접 인코딩 해야한다면
+# echo -n "abcd-1234-5678" | base 64
+# 개행 문자가 뒤에 있으므로 무조건 -n을 붙이자`
