@@ -20,5 +20,5 @@ spec:
     spec:
       containers:
         - name: factorial
-          image: changsungbeom5597/factorial-app:0.0.2
-          command: [ 'sh', '-c', 'sleep 6000']
+          image: changsungbeom5597/factorial-app:1.0.2
+#          command: [ 'sh', '-c', 'sleep 10']
